@@ -1,1 +1,28 @@
-<h3>Kategoriler</h3>
+<h3>{{title}}</h3>
+
+<ul>
+    <li>{{category.id}} - {{category.name}}</li>
+
+    @for (item of categoryList; track $index) {
+      <li>{{item.id}} - {{item.name}}</li>
+    }
+    <li *ngFor="let item of categoryList">{{item.id}} - {{item.name}}</li>
+</ul>
+
+<div class="container">
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Kategori Adı</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let item of categoryList; let i=index">
+    <th>{{i+1}}</th>
+    <th>{{item.name}}</th>
+    </tr>
+  </tbody>
+</table>
+</div>
