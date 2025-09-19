@@ -18,5 +18,16 @@ export class CategoryService {
      return this.http.get<CategoryModel[]>(this.baseUrl);
   }
 
+  create(model:CategoryModel) {
+    return this.http.post<CategoryModel>(this.baseUrl,model)
+  }
+
+  update(model:CategoryModel){
+    return this.http.put(this.baseUrl + model.id,model)
+  }
+
+  delete(id:number){
+    return this.http.delete(this.baseUrl+id)
+  }
 
 }

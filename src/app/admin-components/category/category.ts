@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { CategoryModel } from '../../_models/categoryModel';
+import { CategoryService } from './../../_service/category-service';
+import { Component, model } from '@angular/core';
 
 @Component({
   selector: 'app-category',
@@ -9,16 +11,43 @@ import { Component } from '@angular/core';
 
 export class Category {
 
-title="Kategoriler Başlığı";
+constructor(private categoryService: CategoryService){
+  this.getCategories()
+}
+categories:CategoryModel[];
+newCategory:CategoryModel = new CategoryModel();
+editCategory:CategoryModel = new CategoryModel();
 
-category ={id:1,name:'Kategori 1'}
+getCategories(){
+  this.categoryService.getAll().subscribe({
+    next: values => this.categories = values,
+    error: err=> console.log(err)
+  })
+};
 
-categoryList = [
-  {id:5,name:'Kategori 1'},
-  {id:7,name:'Kategori 2'},
-  {id:9,name:'Kategori 3'},
-  {id:10,name:'Kategori 4'},
-  {id:11,name:'Kategori 5'}
-]
+create(){
+  this.categoryService.create(this.newCategory).subscribe({
+    next: value => this.categories.push(value),
+    error: err=> console.log(err)
+  })
+};
+
+onSelected(model:CategoryModel){
+this.editCategory = model;
+};
+
+update(){
+  this.categoryService.update(this.editCategory).subscribe({
+    error: err=> console.log(err),
+    complete: () => this.getCategories()
+  })
+};
+
+delete(id:number){
+  this.categoryService.delete(id).subscribe({
+    error: err => console.log(err),
+    complete: () => this.getCategories()
+  })
+}
 
 }
