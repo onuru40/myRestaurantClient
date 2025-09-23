@@ -23,7 +23,7 @@ export class CategoryService {
   }
 
   update(model:CategoryModel){
-    return this.http.put(this.baseUrl + model.id,model)
+    return this.http.put(this.baseUrl+model.id,model)
   }
 
   delete(id:number){

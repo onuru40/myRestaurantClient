@@ -1,5 +1,5 @@
 import { CategoryModel } from '../../_models/categoryModel';
-import { CategoryService } from './../../_service/category-service';
+import { CategoryService } from '../../_services/category-service';
 import { Component, model } from '@angular/core';
 
 @Component({

@@ -8,13 +8,17 @@ import { provideHttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AdminLayout } from './_layouts/admin-layout/admin-layout';
 import { MainLayout } from './_layouts/main-layout/main-layout';
+import { Home } from './main-components/home/home';
+import { Product } from './admin-components/product/product';
 
 @NgModule({
   declarations: [
     App,
     Category,
     AdminLayout,
-    MainLayout
+    MainLayout,
+    Home,
+    Product
   ],
   imports: [
     BrowserModule,
